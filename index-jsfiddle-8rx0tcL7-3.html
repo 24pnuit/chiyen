@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSFiddle 8rx0tcL7</title>
+
+  <style>
+    body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4e9f7;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #d147a3; /* Màu hồng sinh nhật */
+}
+
+/* --- Tab Buttons --- */
+.tab-buttons {
+    margin-bottom: 30px;
+}
+
+.tab-buttons button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    background-color: #f0f0f0;
+    color: #6a0dad;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.tab-buttons button.active {
+    background-color: #6a0dad; /* Màu tím đậm */
+    color: white;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.tab-buttons button:hover {
+    transform: translateY(-2px);
+}
+
+/* --- Panels --- */
+.interface-panel {
+    background-color: white;
+    padding: 40px 20px;
+    margin-top: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- Interface 1: Cake --- */
+.cake-visual {
+    font-size: 80px;
+    margin-bottom: 10px;
+}
+
+#blow-candle-btn {
+    padding: 15px 30px;
+    background-color: #ff69b4; /* Hồng kẹo ngọt */
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+#blow-candle-btn:hover {
+    background-color: #ff1493;
+}
+
+#birthday-message {
+    font-size: 1.5em;
+    color: #6a0dad;
+    font-weight: bold;
+    margin-top: 20px;
+    background: #fff8e1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* --- Interface 2: Qualities --- */
+.qualities-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px dashed #d147a3;
+    border-radius: 10px;
+}
+
+.qualities-list label {
+    margin: 5px 0;
+    text-align: left;
+    cursor: pointer;
+}
+
+/* --- Interface 3: Letter --- */
+.letter-content {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    background-color: #fffaf0; /* Giấy thư */
+    padding: 25px;
+    border: 1px solid #f0e0d0;
+    border-radius: 10px;
+    white-space: pre-wrap; /* Giữ định dạng xuống dòng nếu có */
+}
+  </style>
+
+  
+</head>
+<body>
+  <link rel="stylesheet" href="style.css">
+
+
+
+    <header>
+        <h1>🎉 Chúc Mừng Sinh Nhật Chị Yến! 🎉</h1>
+
+    <nav class="tab-buttons">
+        <button onclick="showInterface('cake-section')" class="active">Thổi Nến 🕯️</button>
+        <button onclick="showInterface('qualities-section')">Bình Chọn ✨</button>
+        <button onclick="showInterface('letter-section')">Thư Chúc 💌</button>
+    </nav>
+
+    <section id="cake-section" class="interface-panel active">
+        <div class="cake-container">
+            <div class="cake-visual">🎂</div>
+            <div class="candle">🕯️</div>
+        </div>
+        
+        <button id="blow-candle-btn">Thổi Nến!</button>
+        
+        <p id="birthday-message" class="hidden"></p>
+    </section>
+
+    <section id="qualities-section" class="interface-panel hidden">
+        <h2>2. Bình Chọn Đức Tính Tuyệt Vời Của "Bà Cố"</h2>
+        <p>Những đức tính của chị khiến cho PNHA không thể không yêu bà cố:</p>
+        
+        <div class="qualities-list">
+            <label><input type="checkbox" name="quality"> 1. Thông minh</label>
+            <label><input type="checkbox" name="quality"> 2. Sống tình cảm</label>
+            <label><input type="checkbox" name="quality"> 3. Khéo léo</label>
+            <label><input type="checkbox" name="quality"> 4. Vui tính</label>
+            <label><input type="checkbox" name="quality"> 5. Hòa đồng</label>
+            <label><input type="checkbox" name="quality"> 6. Luôn đứng về phía các em</label>
+            <label><input type="checkbox" name="quality"> 7. Xinh đẹp, style mặc đồ đẹp</label>
+        </div>
+
+        <p class="vote-result"></p>
+    </section>
+
+    <section id="letter-section" class="interface-panel hidden">
+        <h2>3. Bức Thư Gửi Chị Yến Thân Yêu</h2>
+        <div class="letter-content">
+            <p>Gửi chị Yến (aka mẹ Ake, aka Bà Cố),</p>
+            <p>Đầu thư em chỉ mún nói là em làm cái này vì mún chị cười thui, chị đừng khóc nữa nhé em buồn lắm. Cảm ơn chị vì luôn là người chị cả tuyệt vời, là chỗ dựa tinh thần cho em. Thú thật thì chị Yến là người làm cảm xúc của chị lên xuống nhiều nhất từ trước tới nay. Giận chị Yến có, buồn chị Yến có, vui cho chị Yến có, vui khi ở chung với chị Yến cũng có. Nói chung là đủ hết. Tất nhiên đã có những lúc em buồn chị nhiều lắm, nhưng mà cũng ko buồn được lâu đâu chị hehe. </p>
+<p>Chị muốn biết chị Yến trong mắt em là sao không. Trong mắt em, chị là người rất sâu sắc, quan sát và khéo léo nhất từ trước tới giờ em từng biết. Chị đúng kiểu là whole package luôn, học giỏi, thủ khoa, mà còn cư xử khéo léo với tất cả mọi người nữa (em khen khách quan ko xu nịnh độ tin cậy chăm phần chăm, chị nhận zùm em). Chị có biết nhiều lúc em nghĩ, nếu em có cơ hội làm em của chị, không biết em có trở thành người tốt đẹp giống chị không nữa. Không tiêu cực như bây giờ, không lạnh lùng cục đá như bây giờ. </p>
+
+<p>Nói chung là em thích chị lắm. Tình yêu đáp đền tình yêu, ân tình đền đáp ân tình. Chị thương em một thì em có thể thương chị tới mười! đừng có coi thường em. Em không phải kiểu người hay biểu lộ, càng không giỏi thể hiện cho ra đúng những gì mình nghĩ. Nhưng mà chị cứ biết là em chắc chắn rất thương chị. làm việc trong btt em đã bao giờ làm chị thất vọng đâu nè. Em thương chị nhiều hơn chị nghĩ đó nha.</p>
+           
+            <p>Yêu chị thật nhiều!</p>
+            <p style="text-align: right; margin-top: 30px;">— Nhã lê, nhã trân châu, nhã khoai môn, nhã vịt quay, nhã cục đá ❤️</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+
+  <script>
+    // --- Hàm chuyển đổi interface theo thứ tự ---
+function showInterface(interfaceId) {
+    const panels = document.querySelectorAll('.interface-panel');
+    panels.forEach(panel => {
+        panel.classList.add('hidden');
+    });
+
+    document.getElementById(interfaceId).classList.remove('hidden');
+
+    // Cập nhật trạng thái nút (Active)
+    const buttons = document.querySelectorAll('.tab-buttons button');
+    buttons.forEach(btn => {
+        btn.classList.remove('active');
+    });
+    const activeBtn = document.querySelector(`button[onclick="showInterface('${interfaceId}')"]`);
+    if (activeBtn) {
+        activeBtn.classList.add('active');
+    }
+}
+
+// --- 1. Chức năng Thổi Nến & Tự Động Chuyển Interface ---
+document.getElementById('blow-candle-btn').addEventListener('click', function() {
+    const messageElement = document.getElementById('birthday-message');
+    const buttonElement = document.getElementById('blow-candle-btn');
+    const candle = document.querySelector('.candle');
+    const cakeVisual = document.querySelector('.cake-visual');
+
+    // 1. Hiện thông điệp và ẩn nút bấm
+    messageElement.textContent = "🥳 HAPPY BIRTHDAY CHỊ YẾN AKA MẸ AKE BÀ CỐ! 🥳";
+    messageElement.classList.remove('hidden');
+    buttonElement.style.display = 'none';
+    
+    // Tạo hiệu ứng
+    candle.textContent = '💨'; 
+    cakeVisual.textContent = '🎂✨';
+
+    // 2. Tự động chuyển qua interface 2 sau 3 giây
+    setTimeout(() => {
+        showInterface('qualities-section');
+    }, 3000); // 3000ms = 3 giây
+});
+
+
+// --- 2. Chức năng Bình Chọn (Check 7 ô) & Tự Động Chuyển Interface ---
+const checkboxes = document.querySelectorAll('.qualities-list input[type="checkbox"]');
+const resultElement = document.querySelector('.vote-result');
+const totalCheckboxes = checkboxes.length;
+
+function checkAllSelected() {
+    let checkedCount = 0;
+    checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            checkedCount++;
+        }
+    });
+
+    if (checkedCount === totalCheckboxes) {
+        // Chính xác! (Khi chọn đủ 7 ô)
+        resultElement.textContent = "🥳 CHÍNH XÁC! Chị Yến có đủ 7 đức tính tuyệt vời này! 💖";
+        resultElement.style.color = '#008000'; // Màu xanh lá
+        resultElement.style.fontWeight = 'bold';
+        
+        // Vô hiệu hóa checkbox sau khi chính xác
+        checkboxes.forEach(checkbox => {
+            checkbox.disabled = true;
+        });
+
+        // Tự động chuyển qua interface 3 sau 3 giây
+        setTimeout(() => {
+            showInterface('letter-section');
+        }, 3000); // 3000ms = 3 giây
+
+    } else {
+        // Sai (chưa đủ)
+        resultElement.textContent = `SAI (chưa đủ).`;
+        resultElement.style.color = '#ff0000'; // Màu đỏ
+        resultElement.style.fontWeight = 'normal';
+    }
+}
+
+// Gán sự kiện kiểm tra khi người dùng nhấp vào bất kỳ checkbox nào
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', checkAllSelected);
+});
+
+
+// Khởi tạo hiển thị Interface 1 khi trang tải xong
+document.addEventListener('DOMContentLoaded', () => {
+    showInterface('cake-section');
+    // Khởi tạo trạng thái ban đầu cho phần bình chọn
+    checkAllSelected(); 
+});
+  </script>
+</body>
+</html>
